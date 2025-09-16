@@ -1,9 +1,7 @@
 const gameboard = (function() {
     const board = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']];
 
-    const getBoard = function() {
-        return board;
-    }
+    const getBoard = () => board;
 
     const makeMove = (row, col, char) => {
         if (board[row][col] == '_') {
