@@ -1,10 +1,13 @@
 const gameboard = (function() {
-    const board = [['_', '_', '_'], ['_', '_', '_'], ['_', '_', '_']];
+    const defaultChar = '';
+    const board = [[defaultChar, defaultChar, defaultChar],
+                   [defaultChar, defaultChar, defaultChar],
+                   [defaultChar, defaultChar, defaultChar]];
 
     const getBoard = () => board;
 
     const makeMove = (row, col, char) => {
-        if (board[row][col] == '_') {
+        if (board[row][col] == defaultChar) {
             board[row][col] = char;
         }
         else {
