@@ -5,8 +5,18 @@ const gameboard = (function() {
         return board;
     }
 
+    const makeMove = (row, col, char) => {
+        if (board[row][col] == '_') {
+            board[row][col] = char;
+        }
+        else {
+            console.log("That spot is already taken!");
+        }
+    }
+
     return { 
-        getBoard
+        getBoard,
+        makeMove
     };
 })();
 
