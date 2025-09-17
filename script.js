@@ -29,9 +29,11 @@ const gameboard = (function() {
     const makeMove = (row, col, char) => {
         if (board[row][col] == defaultChar) {
             board[row][col] = char;
+            return true;
         }
         else {
             console.log("That spot is already taken!");
+            return false;
         }
     }
 
