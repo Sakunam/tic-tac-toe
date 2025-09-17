@@ -1,10 +1,14 @@
 const gameboard = (function() {
     const defaultChar = '';
-    const board = [[defaultChar, defaultChar, defaultChar],
-                   [defaultChar, defaultChar, defaultChar],
-                   [defaultChar, defaultChar, defaultChar]];
+    const board = [];
 
     const getBoard = () => board;
+
+    const setBoard = () => {
+        board = [[defaultChar, defaultChar, defaultChar],
+                 [defaultChar, defaultChar, defaultChar],
+                 [defaultChar, defaultChar, defaultChar]];
+    }
 
     const someoneWon = () => {
         if ((board[0][0] == board[1][0] && board[1][0] == board[2][0]) ||
@@ -33,6 +37,7 @@ const gameboard = (function() {
 
     return { 
         getBoard,
+        setBoard,
         someoneWon,
         makeMove
     };
