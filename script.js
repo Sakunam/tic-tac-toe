@@ -93,4 +93,24 @@ const gameManager = (function() {
     };
 })();
 
+const displayController = (function() {
+    const displayBoard = () => {
+        const rowElements = document.querySelectorAll(".row");
+        const board = gameboard.getBoard();
+        for (let i = 0; i < rowElements.length; i++) {
+            console.log(board[i]);
+            for (cell of board[i]) {
+                const cellElement = document.createElement("button");
+                cellElement.innerHTML = cell;
+                cellElement.className = "cell";
+                rowElements[i].appendChild(cellElement);
+            }
+        }
+    }
+
+    return {
+        displayBoard
+    }
+})();
+
 gameManager.startGame();
