@@ -27,6 +27,7 @@ const gameboard = (function() {
              board[0][0] == board[1][1] && board[1][1] == board[2][2]) ||
             (board[2][0] != defaultChar && 
              board[2][0] == board[1][1] && board[1][1] == board[0][2])) {
+            alert("Someone won!");
             return true;
         }
         else {
@@ -84,6 +85,10 @@ const gameManager = (function() {
             }
 
             alert(`${gameboard.getBoard()[0]}\n${gameboard.getBoard()[1]}\n${gameboard.getBoard()[2]}`)
+        }
+
+        if (!gameboard.someoneWon()) {
+            alert("It's a tie!");
         }
     }
 
