@@ -1,6 +1,6 @@
 const gameboard = (function() {
     const defaultChar = '';
-    const board = [];
+    let board = [];
 
     const getBoard = () => board;
 
@@ -63,3 +63,34 @@ function createPlayer(name) {
     const increaseScore = () => score++;
     return { name, increaseScore, getScore };
 }
+
+const gameManager = (function() {
+    const startGame = () => {
+        gameboard.setBoard();
+        console.log(gameboard.getBoard());
+        let validMoves = 0;
+        while (validMoves < 9 && !gameboard.someoneWon()) {
+            const rowMove = prompt("row move?");
+            const colMove = prompt("col move?");
+            
+            if (validMoves % 2 == 0) {
+                if (gameboard.makeMove(rowMove, colMove, 'X')) {
+                    validMoves++;
+                    console.log(gameboard.getBoard());
+                }
+            }
+            else {
+                if (gameboard.makeMove(rowMove, colMove, 'O')) {
+                    validMoves++;
+                    console.log(gameboard.getBoard());
+                }
+            }
+        }
+    }
+
+    return {
+        startGame
+    };
+})();
+
+gameManager.startGame();
