@@ -1,6 +1,14 @@
 const gameboard = (function() {
     const defaultChar = '_';
     let board = [];
+    const boardLines = [[[0,0], [1,0], [2,0]],
+                        [[0,1], [1,1], [2,1]],
+                        [[0,2], [1,2], [2,2]],
+                        [[0,0], [0,1], [0,2]],
+                        [[1,0], [1,1], [1,2]],
+                        [[2,0], [2,1], [2,2]],
+                        [[0,0], [1,1], [2,2]],
+                        [[0,2], [1,1], [2,0]]];
 
     const getBoard = () => board;
 
@@ -11,28 +19,17 @@ const gameboard = (function() {
     }
 
     const someoneWon = () => {
-        if ((board[0][0] != defaultChar && 
-             board[0][0] == board[1][0] && board[1][0] == board[2][0]) ||
-            (board[0][1] != defaultChar && 
-             board[0][1] == board[1][1] && board[1][1] == board[2][1]) ||
-            (board[0][2] != defaultChar && 
-             board[0][2] == board[1][2] && board[1][2] == board[2][2]) ||
-            (board[0][0] != defaultChar && 
-             board[0][0] == board[0][1] && board[0][1] == board[0][2]) ||
-            (board[1][0] != defaultChar && 
-             board[1][0] == board[1][1] && board[1][1] == board[1][2]) ||
-            (board[2][0] != defaultChar &&
-             board[2][0] == board[2][1] && board[2][1] == board[2][2]) ||
-            (board[0][0] != defaultChar && 
-             board[0][0] == board[1][1] && board[1][1] == board[2][2]) ||
-            (board[2][0] != defaultChar && 
-             board[2][0] == board[1][1] && board[1][1] == board[0][2])) {
-            alert("Someone won!");
-            return true;
+        for (line of boardLines) {
+            const cellOne = board[line[0][0]][line[0][1]];
+            const cellTwo = board[line[1][0]][line[1][1]];
+            const cellThree = board[line[2][0]][line[2][1]];
+            if (cellOne != defaultChar && 
+                cellOne == cellTwo && cellTwo == cellThree) {
+                alert("Someone won!");
+                return true;
+            }
         }
-        else {
-            return false;
-        }
+        return false;
     }
 
     const makeMove = (row, col, char) => {
@@ -69,27 +66,27 @@ const gameManager = (function() {
     const startGame = () => {
         gameboard.setBoard();
         let validMoves = 0;
-        while (validMoves < 9 && !gameboard.someoneWon()) {
-            const rowMove = prompt("row move?");
-            const colMove = prompt("col move?");
+        // while (validMoves < 9 && !gameboard.someoneWon()) {
+        //     const rowMove = prompt("row move?");
+        //     const colMove = prompt("col move?");
             
-            if (validMoves % 2 == 0) {
-                if (gameboard.makeMove(rowMove, colMove, 'X')) {
-                    validMoves++;
-                }
-            }
-            else {
-                if (gameboard.makeMove(rowMove, colMove, 'O')) {
-                    validMoves++;
-                }
-            }
+        //     if (validMoves % 2 == 0) {
+        //         if (gameboard.makeMove(rowMove, colMove, 'X')) {
+        //             validMoves++;
+        //         }
+        //     }
+        //     else {
+        //         if (gameboard.makeMove(rowMove, colMove, 'O')) {
+        //             validMoves++;
+        //         }
+        //     }
 
-            alert(`${gameboard.getBoard()[0]}\n${gameboard.getBoard()[1]}\n${gameboard.getBoard()[2]}`)
-        }
+        //     alert(`${gameboard.getBoard()[0]}\n${gameboard.getBoard()[1]}\n${gameboard.getBoard()[2]}`)
+        // }
 
-        if (!gameboard.someoneWon()) {
-            alert("It's a tie!");
-        }
+        // if (!gameboard.someoneWon()) {
+        //     alert("It's a tie!");
+        // }
     }
 
     return {
