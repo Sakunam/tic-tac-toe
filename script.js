@@ -64,28 +64,7 @@ function createPlayer(name) {
 const gameManager = (function() {
     const startGame = () => {
         gameboard.setBoard();
-        let validMoves = 0;
-        while (validMoves < 9 && !gameboard.someoneWon()) {
-            const rowMove = prompt("row move?");
-            const colMove = prompt("col move?");
-            
-            if (validMoves % 2 == 0) {
-                if (gameboard.makeMove(rowMove, colMove, 'X')) {
-                    validMoves++;
-                }
-            }
-            else {
-                if (gameboard.makeMove(rowMove, colMove, 'O')) {
-                    validMoves++;
-                }
-            }
-
-            alert(`${gameboard.getBoard()[0]}\n${gameboard.getBoard()[1]}\n${gameboard.getBoard()[2]}`)
-        }
-
-        if (!gameboard.someoneWon()) {
-            alert("It's a tie!");
-        }
+        displayController.displayBoard();
     }
 
     return {
