@@ -1,5 +1,5 @@
 const gameboard = (function() {
-    const defaultChar = '';
+    const defaultChar = '_';
     let board = [];
 
     const getBoard = () => board;
@@ -67,7 +67,6 @@ function createPlayer(name) {
 const gameManager = (function() {
     const startGame = () => {
         gameboard.setBoard();
-        console.log(gameboard.getBoard());
         let validMoves = 0;
         while (validMoves < 9 && !gameboard.someoneWon()) {
             const rowMove = prompt("row move?");
@@ -76,15 +75,15 @@ const gameManager = (function() {
             if (validMoves % 2 == 0) {
                 if (gameboard.makeMove(rowMove, colMove, 'X')) {
                     validMoves++;
-                    console.log(gameboard.getBoard());
                 }
             }
             else {
                 if (gameboard.makeMove(rowMove, colMove, 'O')) {
                     validMoves++;
-                    console.log(gameboard.getBoard());
                 }
             }
+
+            alert(`${gameboard.getBoard()[0]}\n${gameboard.getBoard()[1]}\n${gameboard.getBoard()[2]}`)
         }
     }
 
