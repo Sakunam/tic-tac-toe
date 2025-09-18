@@ -50,15 +50,19 @@ const gameboard = (function() {
     };
 })();
 
-const Player = function(name) {
+const Player = function(name, id, symbol) {
     this.name = name;
+    this.id = id;
+    this.symbol = symbol;
 }
 
-function createPlayer(name) {
+function createPlayer(name, id) {
     let score = 0;
     const getScore = () => score;
     const increaseScore = () => score++;
-    return { name, increaseScore, getScore };
+    let symbol;
+    id == 1 ? symbol = 'X' : symbol = 'O';
+    return { name, id, symbol, increaseScore, getScore };
 }
 
 const gameManager = (function() {
