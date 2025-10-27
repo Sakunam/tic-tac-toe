@@ -77,6 +77,7 @@ const gameManager = (function() {
 
     const startGame = () => {
         gameboard.initializeBoard();
+        activePlayer = players[0];
     }
 
     const makeMove = (row, col) => {
@@ -85,6 +86,7 @@ const gameManager = (function() {
             if (gameboard.someoneWon()) {
                 activePlayer.increaseScore();
                 alert(`${activePlayer.name} won!`);
+                startGame();
             }
             switchActivePlayer();
         }
@@ -101,6 +103,7 @@ const displayController = (function() {
 
     const initializeBoardElements = () => {
         const board = document.querySelector(".board");
+        board.innerHTML = '';
         for (i = 0; i < 3; i++) {
             const row = document.createElement("div")
             board.appendChild(row);
