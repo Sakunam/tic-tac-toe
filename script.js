@@ -12,7 +12,7 @@ const gameboard = (function() {
 
     const getBoard = () => board;
 
-    const setBoard = () => {
+    const initializeBoard = () => {
         const row = [defaultChar, defaultChar, defaultChar];
         board = [[...row], [...row], [...row]];
     }
@@ -76,7 +76,7 @@ const gameManager = (function() {
     }
 
     const startGame = () => {
-        gameboard.setBoard();
+        gameboard.initializeBoard();
         displayController.displayBoard();
     }
 
