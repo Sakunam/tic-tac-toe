@@ -82,6 +82,10 @@ const gameManager = (function() {
     const makeMove = (row, col) => {
         if (gameboard.isValidMove(row, col)) {
             gameboard.setTile(row, col, activePlayer.symbol);
+            if (gameboard.someoneWon()) {
+                activePlayer.increaseScore();
+                alert(`${activePlayer.name} won!`);
+            }
             switchActivePlayer();
         }
     }
