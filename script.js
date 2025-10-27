@@ -31,21 +31,15 @@ const gameboard = (function() {
         return false;
     }
 
-    const makeMove = (row, col, char) => {
-        if (board[row][col] == defaultChar) {
-            return true;
-        }
-        else {
-            console.log("That spot is already taken!");
-            return false;
-        }
+    const isValidMove = (row, col) => {
+        return board[row][col] == defaultChar;
     }
 
     return { 
         getBoard,
         initializeBoard,
         someoneWon,
-        makeMove
+        isValidMove
     };
 })();
 
