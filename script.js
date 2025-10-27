@@ -69,6 +69,11 @@ const gameManager = (function() {
     const playerOne = createPlayer("Player One", 1);
     const playerTwo = createPlayer("Player Two", 2);
     const players = [playerOne, playerTwo];
+    let activePlayer = players[0];
+
+    const switchActivePlayers = () => {
+        activePlayer = activePlayer == playerOne ? activePlayer = playerOne : activePlayer = playerTwo;
+    }
 
     const startGame = () => {
         gameboard.setBoard();
