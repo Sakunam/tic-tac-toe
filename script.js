@@ -72,7 +72,7 @@ const gameManager = (function() {
     let activePlayer = players[0];
 
     const switchActivePlayer = () => {
-        activePlayer == playerOne ? activePlayer = playerOne : activePlayer = playerTwo;
+        activePlayer == playerOne ? activePlayer = playerTwo : activePlayer = playerOne;
     }
 
     const startGame = () => {
