@@ -75,7 +75,7 @@ const gameManager = (function() {
 
     const startGame = () => {
         gameboard.initializeBoard();
-        displayController.displayBoard();
+        displayController.initializeBoardElements();
     }
 
     const makeMove = (row, col) => {
@@ -92,21 +92,26 @@ const gameManager = (function() {
 })();
 
 const displayController = (function() {
-    const displayBoard = () => {
+    let tileElements = [];
+
+    const initializeBoardElements = () => {
         const board = document.querySelector(".board");
         for (i = 0; i < 3; i++) {
             const row = document.createElement("div")
             board.appendChild(row);
+            const rowElements = [];
             for (j = 0; j < 3; j++) {
                 const tile = document.createElement("button");
                 tile.innerHTML = gameboard.getTile(i, j);
                 row.appendChild(tile);
+                rowElements.push(tile);
             }
+            tileElements.push(rowElements);
         }
     }
 
     return {
-        displayBoard
+        initializeBoardElements
     }
 })();
 
