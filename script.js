@@ -43,7 +43,7 @@ const gameboard = (function() {
 
     return { 
         getBoard,
-        setBoard,
+        initializeBoard,
         someoneWon,
         makeMove
     };
