@@ -66,6 +66,10 @@ function createPlayer(name, id) {
 }
 
 const gameManager = (function() {
+    const playerOne = createPlayer("Player One", 1);
+    const playerTwo = createPlayer("Player Two", 2);
+    const players = [playerOne, playerTwo];
+
     const startGame = () => {
         gameboard.setBoard();
         displayController.displayBoard();
