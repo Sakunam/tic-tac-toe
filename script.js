@@ -93,7 +93,16 @@ const gameManager = (function() {
 
 const displayController = (function() {
     const displayBoard = () => {
-
+        const board = document.querySelector(".board");
+        for (i = 0; i < 3; i++) {
+            const row = document.createElement("div")
+            board.appendChild(row);
+            for (j = 0; j < 3; j++) {
+                const tile = document.createElement("button");
+                tile.innerHTML = gameboard.getTile(i, j);
+                row.appendChild(tile);
+            }
+        }
     }
 
     return {
