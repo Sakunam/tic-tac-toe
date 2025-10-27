@@ -10,7 +10,7 @@ const gameboard = (function() {
                         [[0,0], [1,1], [2,2]],
                         [[0,2], [1,1], [2,0]]];
 
-    const getBoard = () => board;
+    const getTile = (row, col) => board[row][col];
 
     const initializeBoard = () => {
         const row = [defaultChar, defaultChar, defaultChar];
@@ -32,11 +32,11 @@ const gameboard = (function() {
     }
 
     const isValidMove = (row, col) => {
-        return board[row][col] == defaultChar;
+        return getTile(row, col) == defaultChar;
     }
 
     return { 
-        getBoard,
+        getTile,
         initializeBoard,
         someoneWon,
         isValidMove
