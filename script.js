@@ -12,6 +12,10 @@ const gameboard = (function() {
 
     const getTile = (row, col) => board[row][col];
 
+    const setTile = (row, col, char) => {
+        board[row][col] = char;
+    }
+
     const initializeBoard = () => {
         const row = [defaultChar, defaultChar, defaultChar];
         board = [[...row], [...row], [...row]];
@@ -37,6 +41,7 @@ const gameboard = (function() {
 
     return { 
         getTile,
+        setTile,
         initializeBoard,
         someoneWon,
         isValidMove
