@@ -81,6 +81,7 @@ const gameManager = (function() {
     const makeMove = (row, col) => {
         if (gameboard.isValidMove(row, col)) {
             gameboard.setTile(row, col, activePlayer.symbol);
+            displayController.updateBoardElement(row, col, activePlayer.symbol);
             switchActivePlayer();
         }
     }
@@ -110,8 +111,13 @@ const displayController = (function() {
         }
     }
 
+    const updateBoardElement = (row, col, symbol) => {
+        tileElements[row][col].innerHTML = symbol;
+    }
+
     return {
-        initializeBoardElements
+        initializeBoardElements,
+        updateBoardElement
     }
 })();
 
