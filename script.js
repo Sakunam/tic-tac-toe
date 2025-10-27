@@ -14,11 +14,13 @@ const gameboard = (function() {
 
     const setTile = (row, col, char) => {
         board[row][col] = char;
+        displayController.updateBoardElement(row, col, char);
     }
 
     const initializeBoard = () => {
         const row = [defaultChar, defaultChar, defaultChar];
         board = [[...row], [...row], [...row]];
+        displayController.initializeBoardElements();
     }
 
     const someoneWon = () => {
@@ -75,13 +77,11 @@ const gameManager = (function() {
 
     const startGame = () => {
         gameboard.initializeBoard();
-        displayController.initializeBoardElements();
     }
 
     const makeMove = (row, col) => {
         if (gameboard.isValidMove(row, col)) {
             gameboard.setTile(row, col, activePlayer.symbol);
-            displayController.updateBoardElement(row, col, activePlayer.symbol);
             switchActivePlayer();
         }
     }
