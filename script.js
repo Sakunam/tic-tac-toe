@@ -69,7 +69,7 @@ const gameManager = (function() {
     const players = [playerOne, playerTwo];
     let activePlayer = players[0];
 
-    const switchActivePlayers = () => {
+    const switchActivePlayer = () => {
         activePlayer == playerOne ? activePlayer = playerOne : activePlayer = playerTwo;
     }
 
