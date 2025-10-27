@@ -33,7 +33,6 @@ const gameboard = (function() {
 
     const makeMove = (row, col, char) => {
         if (board[row][col] == defaultChar) {
-            board[row][col] = char;
             return true;
         }
         else {
@@ -72,7 +71,7 @@ const gameManager = (function() {
     let activePlayer = players[0];
 
     const switchActivePlayers = () => {
-        activePlayer = activePlayer == playerOne ? activePlayer = playerOne : activePlayer = playerTwo;
+        activePlayer == playerOne ? activePlayer = playerOne : activePlayer = playerTwo;
     }
 
     const startGame = () => {
