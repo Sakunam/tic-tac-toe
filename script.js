@@ -78,8 +78,16 @@ const gameManager = (function() {
         displayController.displayBoard();
     }
 
+    const makeMove = (row, col) => {
+        if (gameboard.isValidMove(row, col)) {
+            gameboard.setTile(row, col, activePlayer.symbol);
+            switchActivePlayer();
+        }
+    }
+
     return {
-        startGame
+        startGame,
+        makeMove
     };
 })();
 
